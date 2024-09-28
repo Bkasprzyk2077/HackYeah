@@ -22,7 +22,10 @@ func _ready():
 			var random_cell = get_unique_tile(cell)
 			tile_map.set_cell(cell, 2, random_cell)
 			tiles_and_letters[cell] = cells.find_key(random_cell)
-			#await get_tree().create_timer(1).timeout
+	for cell in tile_map.get_used_cells():
+		if tile_map.get_cell_atlas_coords(cell) in cells.values():
+			tile_map.set_cell(cell, 2, Vector2i(2,2))
+	show_cells(tile_map.local_to_map($Lemur.global_position))
 
 func get_unique_tile(cell):
 	var neightbours = tile_map.get_surrounding_cells(cell)
@@ -34,9 +37,13 @@ func get_unique_tile(cell):
 	neightbours.append(cell + Vector2i(2, 0))
 	neightbours.append(cell + Vector2i(0, -2))
 	neightbours.append(cell + Vector2i(-2, 0))
-	#for n in neightbours:
-		#print(n)
 	var git_list = cells.values().duplicate()
 	for n in neightbours:
 		git_list.erase(tile_map.get_cell_atlas_coords(n))
 	return git_list.pick_random()
+	
+func show_cells(middle_cell):
+	var neightbours = tile_map.get_surrounding_cells(middle_cell)
+	for n in neightbours:
+		if Vector2i(2,2) == tile_map.get_cell_atlas_coords(n):
+			tile_map.set_cell(n, 2, cells[tiles_and_letters[n]])
