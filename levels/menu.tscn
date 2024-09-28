@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://cksyo102wb61k"]
+
+[ext_resource type="Script" path="res://levels/menu.gd" id="1_3pjy6"]
+
+[node name="Menu" type="CanvasLayer"]
+script = ExtResource("1_3pjy6")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "LEMUR GAME"
+
+[node name="PlayButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

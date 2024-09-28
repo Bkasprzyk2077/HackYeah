@@ -37,6 +37,7 @@ func move(letter: String):
 				await tween.finished
 				get_parent().show_cells(tile_map.local_to_map(destination))
 	check_for_victims()
+	#if letter.to_upper() != get_parent().cells.find_key(tile_map.get_cell_atlas_coords(position_in_map)):
 	moved.emit(position_in_map)
 	is_moving = false
 

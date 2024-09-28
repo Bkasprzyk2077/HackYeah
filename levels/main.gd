@@ -51,7 +51,10 @@ func get_unique_tile(cell):
 	var git_list = cells.values().duplicate()
 	for n in neightbours:
 		git_list.erase(tile_map.get_cell_atlas_coords(n))
-	return git_list.pick_random()
+	var random_pick = git_list.pick_random()
+	if random_pick == null:
+		random_pick = get_unique_tile(cell)
+	return random_pick
 	
 func show_cells(middle_cell):
 	var neightbours = tile_map.get_surrounding_cells(middle_cell)

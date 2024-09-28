@@ -4,7 +4,10 @@ var elapsed_time: float = 0.0
 @onready var timer_label = $Control/TimerLabel
 @onready var end_game_panel = $EndGamePanel
 @onready var win_lose_label = $EndGamePanel/VBoxContainer/win_lose_label
+@onready var end_game_time_label = $EndGamePanel/VBoxContainer/end_game_time_label
 
+@export var current_level: String
+@export var next_level: String
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	end_game_panel.visible = false
@@ -27,4 +30,14 @@ func end_game(win: bool):
 		win_lose_label.text = "You won"
 	else:
 		win_lose_label.text = "You lost"
+	end_game_time_label.text = format_time(elapsed_time)
 	end_game_panel.visible = true
+
+
+func _on_next_level_button_pressed():
+	get_tree().change_scene_to_file(next_level)
+
+
+func _on_restart_level_button_pressed():
+	get_tree().change_scene_to_file(current_level)
+	

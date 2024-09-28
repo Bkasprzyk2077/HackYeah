@@ -42,7 +42,8 @@ func chase():
 		
 
 func _on_lemur_moved(position: Vector2i):
-	lemur_path.append(position)
+	if lemur_path.back() != position:
+		lemur_path.append(position)
 	#print(position)
 
 

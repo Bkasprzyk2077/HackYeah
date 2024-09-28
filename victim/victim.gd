@@ -6,4 +6,4 @@ func rescue():
 	print("Vistim rescued!")
 	get_parent().victim_count -= 1
 	get_parent().check_win()
-	queue_free()
+	$AnimationPlayer.play("escape")
