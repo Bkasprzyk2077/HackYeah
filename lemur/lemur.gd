@@ -10,6 +10,8 @@ signal moved(position: Vector2i)
 signal start_game
 
 func _input(event: InputEvent) -> void:
+	if get_parent().is_lost:
+		return
 	if event is InputEventKey:
 		var key_event: InputEventKey = event
 		if key_event.pressed:

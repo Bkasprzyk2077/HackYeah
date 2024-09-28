@@ -2,9 +2,12 @@ extends CanvasLayer
 
 var elapsed_time: float = 0.0
 @onready var timer_label = $Control/TimerLabel
+@onready var end_game_panel = $EndGamePanel
+@onready var win_lose_label = $EndGamePanel/VBoxContainer/win_lose_label
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	end_game_panel.visible = false
 	elapsed_time = 0.0
 
 func _process(delta):
@@ -19,4 +22,9 @@ func format_time(seconds: float) -> String:
 	
 	return str(minutes).pad_zeros(2) + ":" + str(remaining_seconds).pad_zeros(2) + ":" + str(centiseconds).pad_zeros(2)
 
-	
+func end_game(win: bool):
+	if win:
+		win_lose_label.text = "You won"
+	else:
+		win_lose_label.text = "You lost"
+	end_game_panel.visible = true

@@ -26,3 +26,38 @@ grow_horizontal = 2
 text = "TEST"
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="EndGamePanel" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EndGamePanel"]
+layout_mode = 2
+alignment = 1
+
+[node name="win_lose_label" type="Label" parent="EndGamePanel/VBoxContainer"]
+layout_mode = 2
+text = "You won!"
+horizontal_alignment = 1
+
+[node name="end_game_time_label" type="Label" parent="EndGamePanel/VBoxContainer"]
+layout_mode = 2
+text = "00:00:00"
+horizontal_alignment = 1
+
+[node name="next_level_button" type="Button" parent="EndGamePanel/VBoxContainer"]
+layout_mode = 2
+text = "next level"
+
+[node name="restart_level_button" type="Button" parent="EndGamePanel/VBoxContainer"]
+layout_mode = 2
+text = "restart"

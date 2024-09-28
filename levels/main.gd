@@ -11,6 +11,7 @@ var cells = {
 	"F": Vector2i(2,1),
 	"G": Vector2i(0,2),
 	"H": Vector2i(1,2),
+	"I": Vector2i(0,3)
 }
 
 var VOID_CELL_CORDS = Vector2i(2,2)
@@ -62,8 +63,9 @@ func check_win():
 	if !victim_count and !is_lost:
 		is_game_started = false
 		print("WINNER!")
-		await get_tree().create_timer(3).timeout
-		get_tree().change_scene_to_file("res://levels/main.tscn")
+		$Interface.end_game(true)
+		#await get_tree().create_timer(3).timeout
+		#get_tree().change_scene_to_file("res://levels/main.tscn")
 
 
 func lose():
@@ -71,5 +73,6 @@ func lose():
 		is_lost = true
 		is_game_started = false
 		print("You lost!")
-		await get_tree().create_timer(3).timeout
-		get_tree().change_scene_to_file("res://levels/main.tscn")
+		$Interface.end_game(false)
+		#await get_tree().create_timer(3).timeout
+		#get_tree().change_scene_to_file("res://levels/main.tscn")
