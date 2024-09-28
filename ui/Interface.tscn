@@ -19,11 +19,13 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
+offset_left = -160.0
+offset_right = 162.0
+offset_bottom = 111.0
 grow_horizontal = 2
+theme_override_font_sizes/font_size = 42
 text = "00:00:00"
+horizontal_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -40,27 +42,43 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="EndGamePanel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="EndGamePanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EndGamePanel/HBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="win_lose_label" type="Label" parent="EndGamePanel/VBoxContainer"]
+[node name="win_lose_label" type="Label" parent="EndGamePanel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "You won!"
 horizontal_alignment = 1
 
-[node name="end_game_time_label" type="Label" parent="EndGamePanel/VBoxContainer"]
+[node name="end_game_time_label" type="Label" parent="EndGamePanel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "00:00:00"
 horizontal_alignment = 1
 
-[node name="next_level_button" type="Button" parent="EndGamePanel/VBoxContainer"]
+[node name="next_level_button" type="Button" parent="EndGamePanel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "next level"
 
-[node name="restart_level_button" type="Button" parent="EndGamePanel/VBoxContainer"]
+[node name="restart_level_button" type="Button" parent="EndGamePanel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "restart"
 
-[connection signal="pressed" from="EndGamePanel/VBoxContainer/next_level_button" to="." method="_on_next_level_button_pressed"]
-[connection signal="pressed" from="EndGamePanel/VBoxContainer/restart_level_button" to="." method="_on_restart_level_button_pressed"]
+[node name="scores" type="VBoxContainer" parent="EndGamePanel/HBoxContainer"]
+layout_mode = 2
+
+[node name="win_lose_label" type="Label" parent="EndGamePanel/HBoxContainer/scores"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Best scores:"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="EndGamePanel/HBoxContainer/VBoxContainer/next_level_button" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="EndGamePanel/HBoxContainer/VBoxContainer/restart_level_button" to="." method="_on_restart_level_button_pressed"]

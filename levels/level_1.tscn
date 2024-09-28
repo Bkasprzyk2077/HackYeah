@@ -1,13 +1,16 @@
-[gd_scene load_steps=12 format=4 uid="uid://cgjlymn4bbx5u"]
+[gd_scene load_steps=15 format=4 uid="uid://cgjlymn4bbx5u"]
 
 [ext_resource type="Texture2D" uid="uid://3ltlq5vw4r0i" path="res://assets/test_grid.png" id="1_2itjg"]
 [ext_resource type="Script" path="res://levels/main.gd" id="1_ebi8o"]
 [ext_resource type="PackedScene" uid="uid://5q43fay8qshf" path="res://lemur/Lemur.tscn" id="2_81rwq"]
 [ext_resource type="Texture2D" uid="uid://8jhcwwdi6o6x" path="res://assets/TileMapGreen.png" id="3_urolc"]
+[ext_resource type="PackedScene" uid="uid://ce42bf3akcwy5" path="res://victim/Victim.tscn" id="4_vxrjc"]
 [ext_resource type="PackedScene" uid="uid://co2yexvu0kwv" path="res://oppressor/Oppressor.tscn" id="5_8nv4n"]
 [ext_resource type="PackedScene" uid="uid://be7w3lyytbstm" path="res://ui/Interface.tscn" id="5_uapii"]
 [ext_resource type="Texture2D" uid="uid://c13u2tn142u8n" path="res://assets/bg.png" id="6_mcu1d"]
 [ext_resource type="PackedScene" uid="uid://j2wunstu7rd5" path="res://ui/alarm.tscn" id="7_liy0j"]
+[ext_resource type="Texture2D" uid="uid://c08y7xxcfo6of" path="res://assets/Pnacza.png" id="8_o6mwl"]
+[ext_resource type="PackedScene" uid="uid://dsfa3pf2uighc" path="res://boosts/slow_oppressor_boost.tscn" id="10_076qo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yvys7"]
 texture = ExtResource("1_2itjg")
@@ -63,6 +66,28 @@ sources/3 = SubResource("TileSetAtlasSource_mxhib")
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_ebi8o")
+level_name = "Poziom_1"
+
+[node name="bg" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="las" type="TextureRect" parent="bg"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_mcu1d")
+
+[node name="pnacza" type="TextureRect" parent="bg"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_o6mwl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -79,22 +104,22 @@ position = Vector2(-650, -150)
 alarm = NodePath("../Alarm")
 tile_map = NodePath("../TileMapLayer")
 
+[node name="Victim" parent="." instance=ExtResource("4_vxrjc")]
+position = Vector2(50, -150)
+
+[node name="Victim2" parent="." instance=ExtResource("4_vxrjc")]
+position = Vector2(250, 150)
+
+[node name="SlowOppressorBoost" parent="." instance=ExtResource("10_076qo")]
+visible = false
+position = Vector2(-50, -50)
+
 [node name="Alarm" parent="." instance=ExtResource("7_liy0j")]
 layer = 2
 
-[node name="bg" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="TextureRect" type="TextureRect" parent="bg"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("6_mcu1d")
-
 [node name="Interface" parent="." instance=ExtResource("5_uapii")]
 layer = 2
+current_level = "res://levels/level_1.tscn"
+next_level = "res://levels/level_2.tscn"
 
 [editable path="Lemur"]

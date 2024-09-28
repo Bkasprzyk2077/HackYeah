@@ -1,10 +1,11 @@
 extends CanvasLayer
 
 var elapsed_time: float = 0.0
+@onready var scores_container = $EndGamePanel/HBoxContainer/scores
 @onready var timer_label = $Control/TimerLabel
 @onready var end_game_panel = $EndGamePanel
-@onready var win_lose_label = $EndGamePanel/VBoxContainer/win_lose_label
-@onready var end_game_time_label = $EndGamePanel/VBoxContainer/end_game_time_label
+@onready var win_lose_label = $EndGamePanel/HBoxContainer/VBoxContainer/win_lose_label
+@onready var end_game_time_label = $EndGamePanel/HBoxContainer/VBoxContainer/end_game_time_label
 
 @export var current_level: String
 @export var next_level: String
@@ -30,7 +31,8 @@ func end_game(win: bool):
 		win_lose_label.text = "You won"
 	else:
 		win_lose_label.text = "You lost"
-	end_game_time_label.text = format_time(elapsed_time)
+	var formated_time = format_time(elapsed_time)
+	end_game_time_label.text = formated_time
 	end_game_panel.visible = true
 
 

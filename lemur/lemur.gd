@@ -9,10 +9,6 @@ var speed: float = 0.5
 signal moved(position: Vector2i)
 signal start_game
 
-func _ready():
-	scale = Vector2(1, 1)
-	$AnimatedSprite2D.scale = Vector2(1, 1)
-
 func _input(event: InputEvent) -> void:
 	if get_parent().is_lost:
 		return

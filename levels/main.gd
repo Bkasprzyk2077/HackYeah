@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var level_name: String
+
 @onready var tile_map: TileMapLayer = $TileMapLayer
 
 var cells = {
@@ -81,7 +83,7 @@ func show_cells(middle_cell):
 func check_win():
 	if !victim_count and !is_lost:
 		is_game_started = false
-		print("WINNER!")
+		#print("WINNER!")
 		$Interface.end_game(true)
 		#await get_tree().create_timer(3).timeout
 		#get_tree().change_scene_to_file("res://levels/main.tscn")
@@ -91,7 +93,7 @@ func lose():
 	if !is_lost:
 		is_lost = true
 		is_game_started = false
-		print("You lost!")
+		#print("You lost!")
 		$Interface.end_game(false)
 		#await get_tree().create_timer(3).timeout
 		#get_tree().change_scene_to_file("res://levels/main.tscn")

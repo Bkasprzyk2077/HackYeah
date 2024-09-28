@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://dsfa3pf2uighc"]
 
 [ext_resource type="Script" path="res://boosts/slow_oppressor_boost.gd" id="1_wkq3h"]
-[ext_resource type="Texture2D" uid="uid://cywb30n6q4hra" path="res://assets/icon.svg" id="2_tsa27"]
+[ext_resource type="Texture2D" uid="uid://rek4lendafdo" path="res://assets/Mango.png" id="2_4hgqn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hmneg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_tsa27")
+"texture": ExtResource("2_4hgqn")
 }],
 "loop": true,
 "name": &"default",
@@ -22,7 +22,6 @@ script = ExtResource("1_wkq3h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.196078)
-scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_hmneg")
 
 [node name="Area2D" type="Area2D" parent="."]
