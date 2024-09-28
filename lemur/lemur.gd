@@ -14,6 +14,14 @@ func _input(event: InputEvent) -> void:
 func move(letter: String):
 	if !tile_map:
 		return
-	var position_in_map = tile_map.get_coords_for_body_rid(
-	#var surronding_tiles = tile_map.get_surrounding_cells()
+	var position_in_map = tile_map.local_to_map(global_position)
+	var surronding_tiles = tile_map.get_surrounding_cells(position_in_map)
+	#if letter.to_upper() == get_parent().tiles_and_letters[position_in_map]:
+		#global_position = tile_map.map_to_local(position_in_map)
+		#print("test")
+	for n in surronding_tiles:
+		if get_parent().tiles_and_letters.has(n):
+			if letter.to_upper() == get_parent().tiles_and_letters[n]:
+				global_position = tile_map.map_to_local(n)
+		#print(get_parent().tiles_and_letters)
 	

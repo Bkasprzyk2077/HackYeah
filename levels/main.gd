@@ -13,15 +13,16 @@ var cells = {
 	"H": Vector2i(1,2),
 }
 
+var tiles_and_letters: Dictionary = {}
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	for cell in tile_map.get_used_cells():
 		if tile_map.get_cell_atlas_coords(cell) == Vector2i(2,2):
 			var random_cell = get_unique_tile(cell)
 			tile_map.set_cell(cell, 2, random_cell)
+			tiles_and_letters[cell] = cells.find_key(random_cell)
 			#await get_tree().create_timer(1).timeout
-
 
 func get_unique_tile(cell):
 	var neightbours = tile_map.get_surrounding_cells(cell)

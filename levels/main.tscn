@@ -32,5 +32,5 @@ tile_map_data = PackedByteArray("AAD//wAAAgACAAIAAAAAAAAAAgACAAIAAAAAAP//AgACAAI
 tile_set = SubResource("TileSet_o6i83")
 
 [node name="Lemur" parent="." node_paths=PackedStringArray("tile_map") instance=ExtResource("3_tjkdi")]
-position = Vector2(-48, -48)
+position = Vector2(-16, -16)
 tile_map = NodePath("../TileMapLayer")
