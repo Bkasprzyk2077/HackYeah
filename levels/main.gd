@@ -21,8 +21,11 @@ var victim_count: int = 0
 
 var is_lost: bool = false
 
+var is_game_started: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	randomize()
 	victim_count = get_tree().get_node_count_in_group("victims")
 	for cell in tile_map.get_used_cells():
 		if tile_map.get_cell_atlas_coords(cell) == VOID_CELL_CORDS:
@@ -57,6 +60,7 @@ func show_cells(middle_cell):
 
 func check_win():
 	if !victim_count and !is_lost:
+		is_game_started = false
 		print("WINNER!")
 		await get_tree().create_timer(3).timeout
 		get_tree().change_scene_to_file("res://levels/main.tscn")
@@ -65,6 +69,7 @@ func check_win():
 func lose():
 	if !is_lost:
 		is_lost = true
+		is_game_started = false
 		print("You lost!")
 		await get_tree().create_timer(3).timeout
 		get_tree().change_scene_to_file("res://levels/main.tscn")

@@ -7,6 +7,7 @@ var is_moving: bool = false
 var speed: float = 0.5
 
 signal moved(position: Vector2i)
+signal start_game
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
@@ -16,6 +17,9 @@ func _input(event: InputEvent) -> void:
 			move(key_name)
 
 func move(letter: String):
+	if !get_parent().is_game_started:
+		get_parent().is_game_started = true
+		start_game.emit()
 	if !tile_map or is_moving:
 		return
 	is_moving = true

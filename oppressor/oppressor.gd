@@ -15,6 +15,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if !get_parent().is_game_started:
+		return
 	if global_position.distance_to(lemur.global_position) <= 20:
 		get_parent().lose()
 	if lemur and can_move:

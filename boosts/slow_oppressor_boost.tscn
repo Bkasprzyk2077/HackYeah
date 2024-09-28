@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsfa3pf2uighc"]
+
+[ext_resource type="Script" path="res://boosts/slow_oppressor_boost.gd" id="1_wkq3h"]
+[ext_resource type="Texture2D" uid="uid://cywb30n6q4hra" path="res://assets/icon.svg" id="2_tsa27"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hmneg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tsa27")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vjmkn"]
+radius = 8.0
+
+[node name="SlowOppressorBoost" type="Node2D"]
+script = ExtResource("1_wkq3h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.196078)
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_hmneg")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_vjmkn")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

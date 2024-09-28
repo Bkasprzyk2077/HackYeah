@@ -14,7 +14,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Oppressor" type="Node2D"]
+[node name="Oppressor" type="Node2D" groups=["oppressor"]]
 script = ExtResource("1_x1tax")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
