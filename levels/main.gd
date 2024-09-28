@@ -19,6 +19,8 @@ var tiles_and_letters: Dictionary = {}
 
 var victim_count: int = 0
 
+var is_lost: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	victim_count = get_tree().get_node_count_in_group("victims")
@@ -54,7 +56,15 @@ func show_cells(middle_cell):
 			tile_map.set_cell(n, 2, cells[tiles_and_letters[n]])
 
 func check_win():
-	if !victim_count:
+	if !victim_count and !is_lost:
 		print("WINNER!")
+		await get_tree().create_timer(3).timeout
+		get_tree().change_scene_to_file("res://levels/main.tscn")
+
+
+func lose():
+	if !is_lost:
+		is_lost = true
+		print("You lost!")
 		await get_tree().create_timer(3).timeout
 		get_tree().change_scene_to_file("res://levels/main.tscn")

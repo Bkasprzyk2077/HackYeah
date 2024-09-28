@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://p4xnhywibotj"]
+[gd_scene load_steps=8 format=4 uid="uid://p4xnhywibotj"]
 
 [ext_resource type="Texture2D" uid="uid://3ltlq5vw4r0i" path="res://assets/test_grid.png" id="1_2siv6"]
 [ext_resource type="Script" path="res://levels/main.gd" id="1_31blt"]
 [ext_resource type="PackedScene" uid="uid://5q43fay8qshf" path="res://lemur/Lemur.tscn" id="3_tjkdi"]
 [ext_resource type="PackedScene" uid="uid://ce42bf3akcwy5" path="res://victim/Victim.tscn" id="4_phhpo"]
+[ext_resource type="PackedScene" uid="uid://co2yexvu0kwv" path="res://oppressor/Oppressor.tscn" id="5_glvsb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sedmb"]
 texture = ExtResource("1_2siv6")
@@ -42,4 +43,8 @@ tile_map = NodePath("../TileMapLayer")
 
 [node name="Victim2" parent="." node_paths=PackedStringArray("tile_map") instance=ExtResource("4_phhpo")]
 position = Vector2(16, -48)
+tile_map = NodePath("../TileMapLayer")
+
+[node name="Oppressor" parent="." node_paths=PackedStringArray("tile_map") instance=ExtResource("5_glvsb")]
+position = Vector2(-272, -48)
 tile_map = NodePath("../TileMapLayer")

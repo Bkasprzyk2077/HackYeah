@@ -6,6 +6,8 @@ var STEP_LENGTH = 32
 var is_moving: bool = false
 var speed: float = 0.5
 
+signal moved(position: Vector2i)
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		var key_event: InputEventKey = event
@@ -29,6 +31,7 @@ func move(letter: String):
 				await tween.finished
 				get_parent().show_cells(tile_map.local_to_map(destination))
 	check_for_victims()
+	moved.emit(position_in_map)
 	is_moving = false
 
 func check_for_victims():

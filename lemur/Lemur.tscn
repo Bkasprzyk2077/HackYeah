@@ -14,7 +14,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Lemur" type="Node2D"]
+[node name="Lemur" type="Node2D" groups=["lemur"]]
 script = ExtResource("1_wwuwj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
