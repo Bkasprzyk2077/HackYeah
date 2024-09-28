@@ -1,9 +1,10 @@
 extends Node2D
 
+@export var alarm: CanvasLayer
 @export var tile_map: TileMapLayer
 var lemur
 var lemur_path = []
-var speed = 2
+var speed = .5
 var is_moving: bool = false
 var can_move: bool = false
 
@@ -15,8 +16,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	#print(len(lemur_path))
 	if !get_parent().is_game_started:
 		return
+	alarm.visible = global_position.distance_to(lemur.global_position) <= 64
 	if global_position.distance_to(lemur.global_position) <= 20:
 		get_parent().lose()
 	if lemur and can_move:
@@ -31,6 +34,7 @@ func chase():
 		var tween: Tween = get_tree().create_tween()
 		tween.tween_property(self, "global_position", destination, speed)
 		await tween.finished
+		await get_tree().create_timer(1).timeout
 		is_moving = false
 	else:
 		is_moving = true
@@ -38,6 +42,7 @@ func chase():
 		var tween: Tween = get_tree().create_tween()
 		tween.tween_property(self, "global_position", destination, speed)
 		await tween.finished
+		await get_tree().create_timer(1).timeout
 		is_moving = false
 		
 

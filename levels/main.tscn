@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://p4xnhywibotj"]
+[gd_scene load_steps=12 format=4 uid="uid://p4xnhywibotj"]
 
 [ext_resource type="Texture2D" uid="uid://3ltlq5vw4r0i" path="res://assets/test_grid.png" id="1_2siv6"]
 [ext_resource type="Script" path="res://levels/main.gd" id="1_31blt"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://ce42bf3akcwy5" path="res://victim/Victim.tscn" id="4_phhpo"]
 [ext_resource type="PackedScene" uid="uid://co2yexvu0kwv" path="res://oppressor/Oppressor.tscn" id="5_glvsb"]
 [ext_resource type="PackedScene" uid="uid://dsfa3pf2uighc" path="res://boosts/slow_oppressor_boost.tscn" id="6_1nfle"]
+[ext_resource type="Texture2D" uid="uid://c13u2tn142u8n" path="res://assets/bg.png" id="7_tc71m"]
 [ext_resource type="PackedScene" uid="uid://be7w3lyytbstm" path="res://ui/Interface.tscn" id="7_v267f"]
+[ext_resource type="PackedScene" uid="uid://j2wunstu7rd5" path="res://ui/alarm.tscn" id="8_ecf7b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epmh5"]
 texture = ExtResource("1_2siv6")
@@ -44,12 +46,27 @@ tile_map = NodePath("../TileMapLayer")
 position = Vector2(144, 80)
 tile_map = NodePath("../TileMapLayer")
 
-[node name="Oppressor" parent="." node_paths=PackedStringArray("tile_map") instance=ExtResource("5_glvsb")]
+[node name="Oppressor" parent="." node_paths=PackedStringArray("alarm", "tile_map") instance=ExtResource("5_glvsb")]
 position = Vector2(-272, -48)
+alarm = NodePath("../Alarm")
 tile_map = NodePath("../TileMapLayer")
 
 [node name="SlowOppressorBoost" parent="." instance=ExtResource("6_1nfle")]
 position = Vector2(16, -48)
+
+[node name="bg" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="bg"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_tc71m")
+
+[node name="Alarm" parent="." instance=ExtResource("8_ecf7b")]
+layer = 2
 
 [node name="Interface" parent="." instance=ExtResource("7_v267f")]
 current_level = "res://levels/main.tscn"
