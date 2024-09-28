@@ -19,9 +19,7 @@ func _process(delta):
 	#print(len(lemur_path))
 	if !get_parent().is_game_started:
 		return
-	alarm.visible = global_position.distance_to(lemur.global_position) <= 64
-	if global_position.distance_to(lemur.global_position) <= 20:
-		get_parent().lose()
+	alarm.visible = global_position.distance_to(lemur.global_position) <= 150
 	if lemur and can_move:
 		chase()
 
@@ -45,12 +43,16 @@ func chase():
 		await get_tree().create_timer(1).timeout
 		is_moving = false
 		
-
 func _on_lemur_moved(position: Vector2i):
 	if lemur_path.back() != position:
 		lemur_path.append(position)
 	#print(position)
 
-
 func _on_timer_timeout():
 	can_move = true
+
+func _on_area_2d_area_entered(area):
+	print(area)
+	if area.get_parent() == lemur:
+		get_parent().lose()
+		$Area2D.queue_free()

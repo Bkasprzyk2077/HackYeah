@@ -3,18 +3,34 @@ extends Node2D
 @onready var tile_map: TileMapLayer = $TileMapLayer
 
 var cells = {
-	"A": Vector2i(0,0),
-	"B": Vector2i(1,0),
-	"C": Vector2i(2,0),
-	"D": Vector2i(0,1),
-	"E": Vector2i(1,1),
-	"F": Vector2i(2,1),
-	"G": Vector2i(0,2),
-	"H": Vector2i(1,2),
-	"I": Vector2i(0,3)
+	"X": Vector2i(0,0),
+	"S": Vector2i(1,0),
+	"Z": Vector2i(2,0),
+	"U": Vector2i(3,0),
+	"W": Vector2i(4,0),
+	"Y": Vector2i(5,0),
+	"T": Vector2i(6,0),
+	"R": Vector2i(0,1),
+	"M": Vector2i(1,1),
+	"Q": Vector2i(2,1),
+	"N": Vector2i(3,1),
+	"P": Vector2i(4,1),
+	"O": Vector2i(5,1),
+	"L": Vector2i(6,1),
+	"K": Vector2i(0,2),
+	"G": Vector2i(1,2),
+	"A": Vector2i(2,2),
+	"E": Vector2i(3,2),
+	"I": Vector2i(4,2),
+	"J": Vector2i(5,2),
+	"H": Vector2i(6,2),
+	"B": Vector2i(0,3),
+	"F": Vector2i(1,3),
+	"C": Vector2i(2,3),
+	"D": Vector2i(3,3),
 }
 
-var VOID_CELL_CORDS = Vector2i(2,2)
+var VOID_CELL_CORDS = Vector2i(4,3)
 
 var tiles_and_letters: Dictionary = {}
 
@@ -31,11 +47,11 @@ func _ready():
 	for cell in tile_map.get_used_cells():
 		if tile_map.get_cell_atlas_coords(cell) == VOID_CELL_CORDS:
 			var random_cell = get_unique_tile(cell)
-			tile_map.set_cell(cell, 2, random_cell)
+			tile_map.set_cell(cell, 3, random_cell)
 			tiles_and_letters[cell] = cells.find_key(random_cell)
 	for cell in tile_map.get_used_cells():
 		if tile_map.get_cell_atlas_coords(cell) in cells.values():
-			tile_map.set_cell(cell, 2, VOID_CELL_CORDS)
+			tile_map.set_cell(cell, 3, VOID_CELL_CORDS)
 	show_cells(tile_map.local_to_map($Lemur.global_position))
 
 func get_unique_tile(cell):
@@ -60,7 +76,7 @@ func show_cells(middle_cell):
 	var neightbours = tile_map.get_surrounding_cells(middle_cell)
 	for n in neightbours:
 		if VOID_CELL_CORDS == tile_map.get_cell_atlas_coords(n):
-			tile_map.set_cell(n, 2, cells[tiles_and_letters[n]])
+			tile_map.set_cell(n, 3, cells[tiles_and_letters[n]])
 
 func check_win():
 	if !victim_count and !is_lost:

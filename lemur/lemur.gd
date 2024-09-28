@@ -3,13 +3,15 @@ extends Node2D
 @onready var animation_player = $AnimationPlayer
 
 @export var tile_map: TileMapLayer
-var step_length = 0
-var STEP_LENGTH = 32
 var is_moving: bool = false
 var speed: float = 0.5
 
 signal moved(position: Vector2i)
 signal start_game
+
+func _ready():
+	scale = Vector2(1, 1)
+	$AnimatedSprite2D.scale = Vector2(1, 1)
 
 func _input(event: InputEvent) -> void:
 	if get_parent().is_lost:
@@ -33,6 +35,7 @@ func move(letter: String):
 		if get_parent().tiles_and_letters.has(n):
 			if letter.to_upper() == get_parent().tiles_and_letters[n]:
 				#global_position = tile_map.map_to_local(n)
+				
 				animation_player.play("jump")
 				var destination = tile_map.map_to_local(n)
 				var tween: Tween = get_tree().create_tween()
