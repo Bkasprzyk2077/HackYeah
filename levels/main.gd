@@ -13,18 +13,20 @@ var cells = {
 	"H": Vector2i(1,2),
 }
 
+var VOID_CELL_CORDS = Vector2i(2,2)
+
 var tiles_and_letters: Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for cell in tile_map.get_used_cells():
-		if tile_map.get_cell_atlas_coords(cell) == Vector2i(2,2):
+		if tile_map.get_cell_atlas_coords(cell) == VOID_CELL_CORDS:
 			var random_cell = get_unique_tile(cell)
 			tile_map.set_cell(cell, 2, random_cell)
 			tiles_and_letters[cell] = cells.find_key(random_cell)
 	for cell in tile_map.get_used_cells():
 		if tile_map.get_cell_atlas_coords(cell) in cells.values():
-			tile_map.set_cell(cell, 2, Vector2i(2,2))
+			tile_map.set_cell(cell, 2, VOID_CELL_CORDS)
 	show_cells(tile_map.local_to_map($Lemur.global_position))
 
 func get_unique_tile(cell):
@@ -45,5 +47,5 @@ func get_unique_tile(cell):
 func show_cells(middle_cell):
 	var neightbours = tile_map.get_surrounding_cells(middle_cell)
 	for n in neightbours:
-		if Vector2i(2,2) == tile_map.get_cell_atlas_coords(n):
+		if VOID_CELL_CORDS == tile_map.get_cell_atlas_coords(n):
 			tile_map.set_cell(n, 2, cells[tiles_and_letters[n]])
