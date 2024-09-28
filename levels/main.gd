@@ -17,8 +17,11 @@ var VOID_CELL_CORDS = Vector2i(2,2)
 
 var tiles_and_letters: Dictionary = {}
 
+var victim_count: int = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	victim_count = get_tree().get_node_count_in_group("victims")
 	for cell in tile_map.get_used_cells():
 		if tile_map.get_cell_atlas_coords(cell) == VOID_CELL_CORDS:
 			var random_cell = get_unique_tile(cell)
@@ -49,3 +52,9 @@ func show_cells(middle_cell):
 	for n in neightbours:
 		if VOID_CELL_CORDS == tile_map.get_cell_atlas_coords(n):
 			tile_map.set_cell(n, 2, cells[tiles_and_letters[n]])
+
+func check_win():
+	if !victim_count:
+		print("WINNER!")
+		await get_tree().create_timer(3).timeout
+		get_tree().change_scene_to_file("res://levels/main.tscn")

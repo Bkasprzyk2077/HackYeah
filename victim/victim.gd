@@ -1,0 +1,9 @@
+extends Node2D
+
+@export var tile_map: TileMapLayer
+
+func rescue():
+	print("Vistim rescued!")
+	get_parent().victim_count -= 1
+	get_parent().check_win()
+	queue_free()

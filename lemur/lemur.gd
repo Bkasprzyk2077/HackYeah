@@ -28,4 +28,13 @@ func move(letter: String):
 				tween.tween_property(self, "global_position", destination, speed)
 				await tween.finished
 				get_parent().show_cells(tile_map.local_to_map(destination))
+	check_for_victims()
 	is_moving = false
+
+func check_for_victims():
+	var position_in_map = tile_map.local_to_map(global_position)
+	var surronding_tiles = tile_map.get_surrounding_cells(position_in_map)
+	for n in surronding_tiles:
+		for v in get_tree().get_nodes_in_group("victims"):
+			if tile_map.local_to_map(v.global_position) == n:
+				v.rescue()
