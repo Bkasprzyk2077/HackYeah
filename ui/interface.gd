@@ -52,9 +52,11 @@ func end_game(win: bool):
 	end_game_panel.visible = true
 	
 	var sw_result: Dictionary = await SilentWolf.Scores.get_scores().sw_get_scores_complete
+	var scores = sw_result["scores"]
+	scores.reverse()
 	for score in sw_result["scores"]:
 		print("scoree: ", score)
-		var label = Label.new()
+		var label = $EndGamePanel/HBoxContainer/scores/best_scores.duplicate()
 		var name_and_lvl = score["player_name"]
 		var level = score["player_name"].substr(score["player_name"].length() - 6, 6)
 		if level != get_parent().name:
@@ -73,3 +75,7 @@ func _on_next_level_button_pressed():
 func _on_restart_level_button_pressed():
 	get_tree().change_scene_to_file(current_level)
 	
+
+
+func _on_back_pressed():
+	get_tree().change_scene_to_file("res://levels/menu.tscn")

@@ -31,7 +31,7 @@ func move(letter: String):
 		if get_parent().tiles_and_letters.has(n):
 			if letter.to_upper() == get_parent().tiles_and_letters[n]:
 				#global_position = tile_map.map_to_local(n)
-				
+				play_sound()
 				animation_player.play("jump")
 				var destination = tile_map.map_to_local(n)
 				var tween: Tween = get_tree().create_tween()
@@ -50,3 +50,7 @@ func check_for_victims():
 		for v in get_tree().get_nodes_in_group("victims"):
 			if tile_map.local_to_map(v.global_position) == n:
 				v.rescue()
+
+func play_sound():
+	$AudioStreamPlayer2D.pitch_scale = randf_range(.5, 1.5)
+	$AudioStreamPlayer2D.play()

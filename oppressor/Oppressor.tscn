@@ -34,6 +34,7 @@ script = ExtResource("1_x1tax")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4x5j3")
 animation = &"idle"
+autoplay = "idle"
 frame_progress = 0.217119
 
 [node name="Timer" type="Timer" parent="."]

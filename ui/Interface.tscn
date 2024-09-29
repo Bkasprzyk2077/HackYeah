@@ -90,48 +90,56 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -406.0
+offset_top = -226.0
+offset_right = 736.0
+offset_bottom = 227.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="EndGamePanel"]
+[node name="HBoxContainer" type="HSplitContainer" parent="EndGamePanel"]
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="EndGamePanel/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
 alignment = 1
 
 [node name="win_lose_label" type="Label" parent="EndGamePanel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 102
 text = "You won!"
 horizontal_alignment = 1
 
 [node name="end_game_time_label" type="Label" parent="EndGamePanel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 82
 text = "00:00:00"
 horizontal_alignment = 1
 
 [node name="next_level_button" type="Button" parent="EndGamePanel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 62
 text = "next level"
 
 [node name="restart_level_button" type="Button" parent="EndGamePanel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 62
 text = "restart"
 
+[node name="Back" type="Button" parent="EndGamePanel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 61
+text = "back
+"
+
 [node name="scores" type="VBoxContainer" parent="EndGamePanel/HBoxContainer"]
+clip_contents = true
 layout_mode = 2
 
-[node name="win_lose_label" type="Label" parent="EndGamePanel/HBoxContainer/scores"]
+[node name="best_scores" type="Label" parent="EndGamePanel/HBoxContainer/scores"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 62
 text = "Best scores:"
 horizontal_alignment = 1
 
@@ -163,3 +171,4 @@ sprite_frames = SubResource("SpriteFrames_gqk3a")
 
 [connection signal="pressed" from="EndGamePanel/HBoxContainer/VBoxContainer/next_level_button" to="." method="_on_next_level_button_pressed"]
 [connection signal="pressed" from="EndGamePanel/HBoxContainer/VBoxContainer/restart_level_button" to="." method="_on_restart_level_button_pressed"]
+[connection signal="pressed" from="EndGamePanel/HBoxContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

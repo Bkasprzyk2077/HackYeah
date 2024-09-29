@@ -25,6 +25,7 @@ func _on_area_2d_area_entered(area):
 		#oppressor.speed = origin_speed
 	var lemur = get_tree().get_first_node_in_group("lemur")
 	if lemur:
+		$AudioStreamPlayer2D.play()
 		var origin_speed = lemur.speed
 		lemur.speed = 0.1
 		await get_tree().create_timer(8).timeout
