@@ -6,6 +6,7 @@ var elapsed_time: float = 0.0
 @onready var end_game_panel = $EndGamePanel
 @onready var win_lose_label = $EndGamePanel/HBoxContainer/VBoxContainer/win_lose_label
 @onready var end_game_time_label = $EndGamePanel/HBoxContainer/VBoxContainer/end_game_time_label
+@onready var animated_sprite_2d = $Control2/AnimatedSprite2D
 
 @export var current_level: String
 @export var next_level: String
@@ -27,17 +28,26 @@ func format_time(seconds: float) -> String:
 	return str(minutes).pad_zeros(2) + ":" + str(remaining_seconds).pad_zeros(2) + ":" + str(centiseconds).pad_zeros(2)
 
 func end_game(win: bool):
+	$ColorRect.visible = true
 	if win:
+		animated_sprite_2d.queue_free()
 		win_lose_label.text = "You won"
 		$WinSound.play()
 		var name_and_lvl = str(GlobalFunctions.player_name, get_parent().name)
 		var sw_result: Dictionary = await SilentWolf.Scores.save_score(name_and_lvl, elapsed_time).sw_save_score_complete
 		print("Score persisted successfully: " + str(sw_result.score_id))
 	else:
+		$EndGamePanel/HBoxContainer/VBoxContainer/next_level_button.visible = false
 		win_lose_label.text = "You lost"
 		$LoseSound.play()
+		animated_sprite_2d.visible = true
+		animated_sprite_2d.play("default")
+		await animated_sprite_2d.animation_finished
+		animated_sprite_2d.queue_free()
 	var formated_time = format_time(elapsed_time)
 	end_game_time_label.text = formated_time
+	
+	
 	end_game_panel.visible = true
 	
 	var sw_result: Dictionary = await SilentWolf.Scores.get_scores().sw_get_scores_complete

@@ -1,13 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://dew8441wtxjl8"]
+[gd_scene load_steps=9 format=3 uid="uid://dew8441wtxjl8"]
 
-[ext_resource type="Texture2D" uid="uid://cywb30n6q4hra" path="res://assets/icon.svg" id="1_fs2kq"]
 [ext_resource type="Script" path="res://golem/golem.gd" id="1_qwygf"]
+[ext_resource type="Texture2D" uid="uid://b3uw2w7mbqvlt" path="res://assets/Golem-idle.png" id="2_fbwxd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ce26r"]
+atlas = ExtResource("2_fbwxd")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jiums"]
+atlas = ExtResource("2_fbwxd")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8jif"]
+atlas = ExtResource("2_fbwxd")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eervh"]
+atlas = ExtResource("2_fbwxd")
+region = Rect2(300, 0, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_61drp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_fs2kq")
+"texture": SubResource("AtlasTexture_ce26r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jiums")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8jif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eervh")
 }],
 "loop": true,
 "name": &"idle",

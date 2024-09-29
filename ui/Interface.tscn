@@ -1,11 +1,64 @@
-[gd_scene load_steps=4 format=3 uid="uid://be7w3lyytbstm"]
+[gd_scene load_steps=11 format=3 uid="uid://be7w3lyytbstm"]
 
 [ext_resource type="Script" path="res://ui/interface.gd" id="1_gcmhb"]
 [ext_resource type="AudioStream" uid="uid://d4gf5h7isw1i4" path="res://sounds/failure-drum-sound-effect-1-46093.mp3" id="2_1daqv"]
 [ext_resource type="AudioStream" uid="uid://ds44ope2vg3ll" path="res://sounds/item-39146.mp3" id="2_hprly"]
+[ext_resource type="Texture2D" uid="uid://s6sqi7oclhg4" path="res://assets/Klusownik-trap.png" id="4_lnby7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pacxj"]
+atlas = ExtResource("4_lnby7")
+region = Rect2(0, 0, 128, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6g3l0"]
+atlas = ExtResource("4_lnby7")
+region = Rect2(128, 0, 128, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcyqb"]
+atlas = ExtResource("4_lnby7")
+region = Rect2(256, 0, 128, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffgyj"]
+atlas = ExtResource("4_lnby7")
+region = Rect2(384, 0, 128, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4suq"]
+atlas = ExtResource("4_lnby7")
+region = Rect2(512, 0, 128, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gqk3a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pacxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6g3l0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcyqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffgyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4suq")
+}],
+"loop": false,
+"name": &"default",
+"speed": 3.0
+}]
 
 [node name="Interface" type="CanvasLayer"]
 script = ExtResource("1_gcmhb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.494118)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -87,6 +140,26 @@ stream = ExtResource("2_hprly")
 
 [node name="LoseSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_1daqv")
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control2"]
+visible = false
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_gqk3a")
 
 [connection signal="pressed" from="EndGamePanel/HBoxContainer/VBoxContainer/next_level_button" to="." method="_on_next_level_button_pressed"]
 [connection signal="pressed" from="EndGamePanel/HBoxContainer/VBoxContainer/restart_level_button" to="." method="_on_restart_level_button_pressed"]

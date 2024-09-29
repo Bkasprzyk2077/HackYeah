@@ -16,4 +16,5 @@ func _on_timer_timeout():
 func _on_area_2d_area_entered(area):
 	if area.get_parent() == get_tree().get_first_node_in_group("lemur"):
 		get_parent().lose()
-		$Area2D.queue_free()
+		$Area2D/CollisionShape2D.disabled = true
+		$Timer.stop()
