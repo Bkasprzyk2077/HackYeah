@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://b5fx76ij65prp"]
+[gd_scene load_steps=16 format=4 uid="uid://b5fx76ij65prp"]
 
 [ext_resource type="Script" path="res://levels/main.gd" id="1_e1y3m"]
 [ext_resource type="Texture2D" uid="uid://c13u2tn142u8n" path="res://assets/bg.png" id="2_qss6s"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://xybclorkvdyb" path="res://assets/tile_maps/yellow.png" id="6_wntd8"]
 [ext_resource type="PackedScene" uid="uid://5q43fay8qshf" path="res://lemur/Lemur.tscn" id="7_c4jml"]
 [ext_resource type="PackedScene" uid="uid://ce42bf3akcwy5" path="res://victim/Victim.tscn" id="9_bctam"]
-[ext_resource type="PackedScene" uid="uid://dsfa3pf2uighc" path="res://boosts/slow_oppressor_boost.tscn" id="10_msphi"]
 [ext_resource type="PackedScene" uid="uid://j2wunstu7rd5" path="res://ui/alarm.tscn" id="11_2nx0d"]
 [ext_resource type="PackedScene" uid="uid://be7w3lyytbstm" path="res://ui/Interface.tscn" id="12_jrqs3"]
 [ext_resource type="PackedScene" uid="uid://rkg48lkuehld" path="res://trap/FireTrap.tscn" id="13_7vg1a"]
@@ -157,10 +156,6 @@ position = Vector2(-850, 150)
 
 [node name="Victim2" parent="." instance=ExtResource("9_bctam")]
 position = Vector2(550, 450)
-
-[node name="SlowOppressorBoost" parent="." instance=ExtResource("10_msphi")]
-visible = false
-position = Vector2(-50, -50)
 
 [node name="Alarm" parent="." instance=ExtResource("11_2nx0d")]
 layer = 2
