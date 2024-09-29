@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://djbx5jnceidcv"]
+[gd_scene load_steps=18 format=4 uid="uid://djbx5jnceidcv"]
 
 [ext_resource type="Script" path="res://levels/main.gd" id="1_shuoh"]
 [ext_resource type="Texture2D" uid="uid://c13u2tn142u8n" path="res://assets/bg.png" id="2_tuq5e"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ce42bf3akcwy5" path="res://victim/Victim.tscn" id="8_1jpw2"]
 [ext_resource type="PackedScene" uid="uid://dsfa3pf2uighc" path="res://boosts/slow_oppressor_boost.tscn" id="9_h4rdb"]
 [ext_resource type="PackedScene" uid="uid://j2wunstu7rd5" path="res://ui/alarm.tscn" id="10_jkyib"]
+[ext_resource type="PackedScene" uid="uid://dew8441wtxjl8" path="res://golem/golem.tscn" id="11_0tvn7"]
 [ext_resource type="PackedScene" uid="uid://be7w3lyytbstm" path="res://ui/Interface.tscn" id="11_n2run"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3lg2d"]
@@ -174,6 +175,12 @@ position = Vector2(-50, -50)
 [node name="SlowOppressorBoost2" parent="." instance=ExtResource("9_h4rdb")]
 position = Vector2(-550, 150)
 
+[node name="Golem" parent="." instance=ExtResource("11_0tvn7")]
+position = Vector2(-350, -50)
+
+[node name="Line2D" parent="Golem" index="1"]
+points = PackedVector2Array(0, 0, 0, -100, 0, -200, 100, -200, 100, -100, 100, 0, 0, 0)
+
 [node name="Alarm" parent="." instance=ExtResource("10_jkyib")]
 layer = 2
 
@@ -181,3 +188,5 @@ layer = 2
 layer = 2
 current_level = "res://levels/level_2.tscn"
 next_level = "res://levels/level_3.tscn"
+
+[editable path="Golem"]

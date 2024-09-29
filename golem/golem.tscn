@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dew8441wtxjl8"]
+
+[ext_resource type="Texture2D" uid="uid://cywb30n6q4hra" path="res://assets/icon.svg" id="1_fs2kq"]
+[ext_resource type="Script" path="res://golem/golem.gd" id="1_qwygf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_61drp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fs2kq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o7ytd"]
+radius = 30.0
+
+[node name="Golem" type="Node2D"]
+script = ExtResource("1_qwygf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_61drp")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
+shape = SubResource("CircleShape2D_o7ytd")
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="area_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
