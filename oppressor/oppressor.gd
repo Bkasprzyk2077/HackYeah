@@ -24,7 +24,7 @@ func _process(delta):
 		chase()
 
 func chase():
-	if is_moving:
+	if is_moving and !get_parent().is_win and !get_parent().is_lost:
 		return
 	if lemur_path:
 		is_moving = true

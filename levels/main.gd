@@ -5,31 +5,31 @@ extends Node2D
 @onready var tile_map: TileMapLayer = $TileMapLayer
 
 var cells = {
-	"X": Vector2i(0,0),
-	"S": Vector2i(1,0),
-	"Z": Vector2i(2,0),
-	"U": Vector2i(3,0),
-	"W": Vector2i(4,0),
-	"Y": Vector2i(5,0),
-	"T": Vector2i(6,0),
-	"R": Vector2i(0,1),
-	"M": Vector2i(1,1),
-	"Q": Vector2i(2,1),
-	"N": Vector2i(3,1),
-	"P": Vector2i(4,1),
-	"O": Vector2i(5,1),
-	"L": Vector2i(6,1),
-	"K": Vector2i(0,2),
-	"G": Vector2i(1,2),
-	"A": Vector2i(2,2),
-	"E": Vector2i(3,2),
-	"I": Vector2i(4,2),
-	"J": Vector2i(5,2),
-	"H": Vector2i(6,2),
-	"B": Vector2i(0,3),
-	"F": Vector2i(1,3),
-	"C": Vector2i(2,3),
-	"D": Vector2i(3,3),
+	"A": Vector2i(0,0),
+	"B": Vector2i(1,0),
+	"C": Vector2i(2,0),
+	"D": Vector2i(3,0),
+	"E": Vector2i(4,0),
+	"F": Vector2i(5,0),
+	"G": Vector2i(6,0),
+	"H": Vector2i(0,1),
+	"I": Vector2i(1,1),
+	"J": Vector2i(2,1),
+	"K": Vector2i(3,1),
+	"L": Vector2i(4,1),
+	"M": Vector2i(5,1),
+	"N": Vector2i(6,1),
+	"O": Vector2i(0,2),
+	"P": Vector2i(1,2),
+	"Q": Vector2i(2,2),
+	"R": Vector2i(3,2),
+	"S": Vector2i(4,2),
+	"T": Vector2i(5,2),
+	"U": Vector2i(6,2),
+	"W": Vector2i(0,3),
+	"X": Vector2i(1,3),
+	"Y": Vector2i(2,3),
+	"Z": Vector2i(3,3),
 }
 
 var VOID_CELL_CORDS = Vector2i(4,3)
@@ -39,6 +39,8 @@ var tiles_and_letters: Dictionary = {}
 var victim_count: int = 0
 
 var is_lost: bool = false
+
+var is_win: bool = false
 
 var is_game_started: bool = false
 
@@ -83,6 +85,7 @@ func show_cells(middle_cell):
 func check_win():
 	if !victim_count and !is_lost:
 		is_game_started = false
+		is_win = true
 		#print("WINNER!")
 		$Interface.end_game(true)
 		#await get_tree().create_timer(3).timeout
