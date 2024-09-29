@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://duuajqphd5lvp"]
+
+[ext_resource type="Script" path="res://doors/doors.gd" id="1_bxbsc"]
+[ext_resource type="Texture2D" uid="uid://cywb30n6q4hra" path="res://assets/icon.svg" id="1_lgm3b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y2umu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lgm3b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Doors" type="Node2D"]
+script = ExtResource("1_bxbsc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_y2umu")

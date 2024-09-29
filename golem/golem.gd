@@ -10,7 +10,6 @@ func _on_timer_timeout():
 	if !line_2d.points or !can_move:
 		return
 	var destination = to_global(line_2d.points[i])
-	print(destination)
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property($AnimatedSprite2D, "global_position", destination, speed)
 	await tween.finished
