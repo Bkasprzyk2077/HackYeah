@@ -181,7 +181,7 @@ layer = 2
 [node name="Interface" parent="." instance=ExtResource("12_6h8xj")]
 layer = 2
 current_level = "res://levels/level_3.tscn"
-next_level = "res://levels/level_3.tscn"
+next_level = "res://levels/level_4.tscn"
 
 [node name="Doors" parent="." node_paths=PackedStringArray("key") instance=ExtResource("13_5bqxo")]
 position = Vector2(-650, -50)

@@ -181,7 +181,7 @@ layer = 2
 [node name="Interface" parent="." instance=ExtResource("12_i2y4k")]
 layer = 2
 current_level = "res://levels/level_4.tscn"
-next_level = "res://levels/level_4.tscn"
+next_level = "res://levels/menu.tscn"
 
 [node name="Victim" parent="." instance=ExtResource("9_kf41o")]
 position = Vector2(50, -150)
