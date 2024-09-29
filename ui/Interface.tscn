@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://be7w3lyytbstm"]
+[gd_scene load_steps=4 format=3 uid="uid://be7w3lyytbstm"]
 
 [ext_resource type="Script" path="res://ui/interface.gd" id="1_gcmhb"]
+[ext_resource type="AudioStream" uid="uid://d4gf5h7isw1i4" path="res://sounds/failure-drum-sound-effect-1-46093.mp3" id="2_1daqv"]
+[ext_resource type="AudioStream" uid="uid://ds44ope2vg3ll" path="res://sounds/item-39146.mp3" id="2_hprly"]
 
 [node name="Interface" type="CanvasLayer"]
 script = ExtResource("1_gcmhb")
@@ -79,6 +81,12 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Best scores:"
 horizontal_alignment = 1
+
+[node name="WinSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_hprly")
+
+[node name="LoseSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_1daqv")
 
 [connection signal="pressed" from="EndGamePanel/HBoxContainer/VBoxContainer/next_level_button" to="." method="_on_next_level_button_pressed"]
 [connection signal="pressed" from="EndGamePanel/HBoxContainer/VBoxContainer/restart_level_button" to="." method="_on_restart_level_button_pressed"]

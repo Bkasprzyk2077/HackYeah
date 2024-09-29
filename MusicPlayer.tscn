@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq5ooo8fuu0ca"]
+
+[ext_resource type="AudioStream" uid="uid://cmjt1cfkljllb" path="res://sounds/game-music-loop-3-144252.mp3" id="1_7qinl"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_7qinl")
+autoplay = true
+parameters/looping = true

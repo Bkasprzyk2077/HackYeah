@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var level_name: String
+@export var biome_id: int
 
 @onready var tile_map: TileMapLayer = $TileMapLayer
 
@@ -49,11 +49,11 @@ func _ready():
 	for cell in tile_map.get_used_cells():
 		if tile_map.get_cell_atlas_coords(cell) == VOID_CELL_CORDS:
 			var random_cell = get_unique_tile(cell)
-			tile_map.set_cell(cell, 3, random_cell)
+			tile_map.set_cell(cell, biome_id, random_cell)
 			tiles_and_letters[cell] = cells.find_key(random_cell)
 	for cell in tile_map.get_used_cells():
 		if tile_map.get_cell_atlas_coords(cell) in cells.values():
-			tile_map.set_cell(cell, 3, VOID_CELL_CORDS)
+			tile_map.set_cell(cell, biome_id, VOID_CELL_CORDS)
 	show_cells(tile_map.local_to_map($Lemur.global_position))
 
 func get_unique_tile(cell):
@@ -78,7 +78,7 @@ func show_cells(middle_cell):
 	var neightbours = tile_map.get_surrounding_cells(middle_cell)
 	for n in neightbours:
 		if VOID_CELL_CORDS == tile_map.get_cell_atlas_coords(n):
-			tile_map.set_cell(n, 3, cells[tiles_and_letters[n]])
+			tile_map.set_cell(n, biome_id, cells[tiles_and_letters[n]])
 
 func check_win():
 	if !victim_count and !is_lost:

@@ -29,8 +29,10 @@ func format_time(seconds: float) -> String:
 func end_game(win: bool):
 	if win:
 		win_lose_label.text = "You won"
+		$WinSound.play()
 	else:
 		win_lose_label.text = "You lost"
+		$LoseSound.play()
 	var formated_time = format_time(elapsed_time)
 	end_game_time_label.text = formated_time
 	end_game_panel.visible = true

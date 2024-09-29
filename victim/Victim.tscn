@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://ce42bf3akcwy5"]
+[gd_scene load_steps=17 format=3 uid="uid://ce42bf3akcwy5"]
 
 [ext_resource type="Script" path="res://victim/victim.gd" id="1_jw0me"]
 [ext_resource type="Texture2D" uid="uid://c0ame74xpdt55" path="res://assets/lemur_sprites/Lemur_klataYELLOW.png" id="2_4tsej"]
 [ext_resource type="Texture2D" uid="uid://bw2wmwbfxwaum" path="res://assets/lemur_sprites/Lemur_smol_idle.png" id="3_bsdu6"]
+[ext_resource type="AudioStream" uid="uid://b3dds1y65nrj4" path="res://sounds/retro-coin-3-236679.mp3" id="4_4bfyo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0xrxw"]
 atlas = ExtResource("2_4tsej")
@@ -184,3 +185,6 @@ autoplay = "caged_idle"
 libraries = {
 "": SubResource("AnimationLibrary_nd6ok")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_4bfyo")

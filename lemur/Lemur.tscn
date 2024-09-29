@@ -138,7 +138,7 @@ script = ExtResource("1_wwuwj")
 sprite_frames = SubResource("SpriteFrames_pn8na")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.188702
+frame_progress = 0.265167
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6ya0a1dpwn60"
-path="res://.godot/imported/TileMapPink.png-9f133130c5fffa9223883d9d1d02c549.ctex"
+uid="uid://dvqscxtiu7jac"
+path="res://.godot/imported/Klusownik.png-eda0d2cd7b82489cfd4a72c7e6485ca9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/lemur_sprites/TileMapPink.png"
-dest_files=["res://.godot/imported/TileMapPink.png-9f133130c5fffa9223883d9d1d02c549.ctex"]
+source_file="res://assets/Klusownik.png"
+dest_files=["res://.godot/imported/Klusownik.png-eda0d2cd7b82489cfd4a72c7e6485ca9.ctex"]
 
 [params]
 

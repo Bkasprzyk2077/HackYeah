@@ -1,6 +1,5 @@
-[gd_scene load_steps=15 format=4 uid="uid://cgjlymn4bbx5u"]
+[gd_scene load_steps=13 format=4 uid="uid://cgjlymn4bbx5u"]
 
-[ext_resource type="Texture2D" uid="uid://3ltlq5vw4r0i" path="res://assets/test_grid.png" id="1_2itjg"]
 [ext_resource type="Script" path="res://levels/main.gd" id="1_ebi8o"]
 [ext_resource type="PackedScene" uid="uid://5q43fay8qshf" path="res://lemur/Lemur.tscn" id="2_81rwq"]
 [ext_resource type="Texture2D" uid="uid://8jhcwwdi6o6x" path="res://assets/TileMapGreen.png" id="3_urolc"]
@@ -11,20 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://j2wunstu7rd5" path="res://ui/alarm.tscn" id="7_liy0j"]
 [ext_resource type="Texture2D" uid="uid://c08y7xxcfo6of" path="res://assets/Pnacza.png" id="8_o6mwl"]
 [ext_resource type="PackedScene" uid="uid://dsfa3pf2uighc" path="res://boosts/slow_oppressor_boost.tscn" id="10_076qo"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yvys7"]
-texture = ExtResource("1_2itjg")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-0:3/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mxhib"]
 texture = ExtResource("3_urolc")
@@ -61,12 +46,11 @@ texture_region_size = Vector2i(100, 100)
 
 [sub_resource type="TileSet" id="TileSet_x7p27"]
 tile_size = Vector2i(100, 100)
-sources/2 = SubResource("TileSetAtlasSource_yvys7")
 sources/3 = SubResource("TileSetAtlasSource_mxhib")
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_ebi8o")
-level_name = "Poziom_1"
+biome_id = 3
 
 [node name="bg" type="CanvasLayer" parent="."]
 layer = -1
