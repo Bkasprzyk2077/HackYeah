@@ -13,4 +13,5 @@ func _process(delta):
 
 
 func _on_play_button_pressed():
-	get_tree().change_scene_to_file("res://levels/main.tscn")
+	GlobalFunctions.pick_name($PanelContainer/VBoxContainer/LineEdit.text)
+	get_tree().change_scene_to_file("res://levels/level_1.tscn")

@@ -30,7 +30,7 @@ func end_game(win: bool):
 	if win:
 		win_lose_label.text = "You won"
 		$WinSound.play()
-		var name_and_lvl = str("player_1", get_parent().name)
+		var name_and_lvl = str(GlobalFunctions.player_name, get_parent().name)
 		var sw_result: Dictionary = await SilentWolf.Scores.save_score(name_and_lvl, elapsed_time).sw_save_score_complete
 		print("Score persisted successfully: " + str(sw_result.score_id))
 	else:
@@ -50,7 +50,7 @@ func end_game(win: bool):
 			continue
 		var player_name = name_and_lvl.replace(level, "")
 		var time_score = format_time(score["score"])
-		label.text = str(level, player_name, ": ", time_score)
+		label.text = str(player_name, ": ", time_score)
 		scores_container.add_child(label)
 	#print("Scores: " + str(sw_result.scores))
 
