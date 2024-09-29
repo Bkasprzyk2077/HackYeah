@@ -1,0 +1,179 @@
+[gd_scene load_steps=16 format=4 uid="uid://crfatfw4yhif8"]
+
+[ext_resource type="Script" path="res://levels/main.gd" id="1_d1dcl"]
+[ext_resource type="Texture2D" uid="uid://c13u2tn142u8n" path="res://assets/bg.png" id="2_pt4sj"]
+[ext_resource type="Texture2D" uid="uid://c08y7xxcfo6of" path="res://assets/Pnacza.png" id="3_6f4dg"]
+[ext_resource type="Texture2D" uid="uid://lvvh6ad2roew" path="res://assets/tile_maps/green.png" id="4_f3s1p"]
+[ext_resource type="Texture2D" uid="uid://du5hcvpfny0r4" path="res://assets/tile_maps/pink.png" id="5_wwrpj"]
+[ext_resource type="Texture2D" uid="uid://xybclorkvdyb" path="res://assets/tile_maps/yellow.png" id="6_l32hf"]
+[ext_resource type="PackedScene" uid="uid://5q43fay8qshf" path="res://lemur/Lemur.tscn" id="7_bcd7n"]
+[ext_resource type="PackedScene" uid="uid://co2yexvu0kwv" path="res://oppressor/Oppressor.tscn" id="8_mil28"]
+[ext_resource type="PackedScene" uid="uid://dew8441wtxjl8" path="res://golem/golem.tscn" id="9_4udxm"]
+[ext_resource type="PackedScene" uid="uid://j2wunstu7rd5" path="res://ui/alarm.tscn" id="11_mvv7l"]
+[ext_resource type="PackedScene" uid="uid://be7w3lyytbstm" path="res://ui/Interface.tscn" id="12_i2y4k"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3lg2d"]
+texture = ExtResource("4_f3s1p")
+texture_region_size = Vector2i(100, 100)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+0:4/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3el6u"]
+texture = ExtResource("5_wwrpj")
+texture_region_size = Vector2i(100, 100)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+0:4/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k022h"]
+texture = ExtResource("6_l32hf")
+texture_region_size = Vector2i(100, 100)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+0:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_x7p27"]
+tile_size = Vector2i(100, 100)
+sources/0 = SubResource("TileSetAtlasSource_3lg2d")
+sources/1 = SubResource("TileSetAtlasSource_3el6u")
+sources/2 = SubResource("TileSetAtlasSource_k022h")
+
+[node name="Level4" type="Node2D"]
+script = ExtResource("1_d1dcl")
+biome_id = 2
+
+[node name="bg" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="las" type="TextureRect" parent="bg"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_pt4sj")
+
+[node name="pnacza" type="TextureRect" parent="bg"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_6f4dg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD4/wMAAgAEAAMAAAD5/wMAAgAEAAMAAAD6/wMAAgAEAAMAAAD7/wMAAgAEAAMAAAD7/wIAAgAEAAMAAAD6/wIAAgAEAAMAAAD5/wIAAgAEAAMAAAD4/wIAAgAEAAMAAAD4/wEAAgAEAAMAAAD5/wEAAgAEAAMAAAD6/wEAAgAEAAMAAAD7/wEAAgAEAAMAAAD8/wIAAgAEAAMAAAD9/wIAAgAEAAMAAAD+/wIAAgAEAAMAAAD//wIAAgAEAAMAAAAAAAIAAgAEAAMAAAABAAIAAgAEAAMAAAACAAIAAgAEAAMAAAADAAIAAgAEAAMAAAAEAAIAAgAEAAMAAAAEAAEAAgAEAAMAAAAEAAAAAgAEAAMAAAAEAP//AgAEAAMAAAAEAP7/AgAEAAMAAAAEAP3/AgAEAAMAAAAEAPz/AgAEAAMAAAAEAPv/AgAEAAMAAAADAPv/AgAEAAMAAAACAPv/AgAEAAMAAAABAPv/AgAEAAMAAAAAAPv/AgAEAAMAAAD///v/AgAEAAMAAAD+//v/AgAEAAMAAAD8//v/AgAEAAMAAAD9//v/AgAEAAMAAAD8//z/AgAEAAMAAAD8//3/AgAEAAMAAAD8//7/AgAEAAMAAAD8////AgAEAAMAAAD8/wAAAgAEAAMAAAD8/wEAAgAEAAMAAAAAAAMAAgAEAAMAAAABAAMAAgAEAAMAAAAFAP//AgAEAAMAAAAFAP7/AgAEAAMAAAABAPr/AgAEAAMAAAAAAPr/AgAEAAMAAAA=")
+tile_set = SubResource("TileSet_x7p27")
+
+[node name="Lemur" parent="." node_paths=PackedStringArray("tile_map") instance=ExtResource("7_bcd7n")]
+position = Vector2(-650, 250)
+tile_map = NodePath("../TileMapLayer")
+
+[node name="Oppressor" parent="." node_paths=PackedStringArray("alarm", "tile_map") instance=ExtResource("8_mil28")]
+position = Vector2(-950, 250)
+alarm = NodePath("../Alarm")
+tile_map = NodePath("../TileMapLayer")
+
+[node name="Golem" parent="." node_paths=PackedStringArray("tile_map") instance=ExtResource("9_4udxm")]
+position = Vector2(-350, -450)
+tile_map = NodePath("../TileMapLayer")
+
+[node name="Area2D" parent="Golem/AnimatedSprite2D" index="0"]
+visible = false
+
+[node name="Line2D" parent="Golem" index="1"]
+visible = true
+points = PackedVector2Array(0, 0, 0, 0, 0, 200, 0, 400, 0, 600, 0, 700, 200, 700, 400, 700, 600, 700, 800, 700, 800, 500, 800, 300, 800, 100, 800, 0, 600, 0, 400, 0, 200, 0, 0, 0)
+
+[node name="Alarm" parent="." instance=ExtResource("11_mvv7l")]
+layer = 2
+
+[node name="Interface" parent="." instance=ExtResource("12_i2y4k")]
+layer = 2
+current_level = "res://levels/level_3.tscn"
+next_level = "res://levels/level_3.tscn"
+
+[editable path="Golem"]

@@ -40,10 +40,11 @@ func end_game(win: bool):
 		$EndGamePanel/HBoxContainer/VBoxContainer/next_level_button.visible = false
 		win_lose_label.text = "You lost"
 		$LoseSound.play()
-		animated_sprite_2d.visible = true
-		animated_sprite_2d.play("default")
-		await animated_sprite_2d.animation_finished
-		animated_sprite_2d.queue_free()
+		if animated_sprite_2d:
+			animated_sprite_2d.visible = true
+			animated_sprite_2d.play("default")
+			await animated_sprite_2d.animation_finished
+			animated_sprite_2d.queue_free()
 	var formated_time = format_time(elapsed_time)
 	end_game_time_label.text = formated_time
 	
