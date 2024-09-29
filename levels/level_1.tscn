@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cgjlymn4bbx5u"]
+[gd_scene load_steps=18 format=4 uid="uid://cgjlymn4bbx5u"]
 
 [ext_resource type="Script" path="res://levels/main.gd" id="1_ebi8o"]
 [ext_resource type="PackedScene" uid="uid://5q43fay8qshf" path="res://lemur/Lemur.tscn" id="2_81rwq"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://j2wunstu7rd5" path="res://ui/alarm.tscn" id="7_liy0j"]
 [ext_resource type="Texture2D" uid="uid://c08y7xxcfo6of" path="res://assets/Pnacza.png" id="8_o6mwl"]
 [ext_resource type="PackedScene" uid="uid://dsfa3pf2uighc" path="res://boosts/slow_oppressor_boost.tscn" id="10_076qo"]
+[ext_resource type="PackedScene" uid="uid://rkg48lkuehld" path="res://trap/FireTrap.tscn" id="13_7vrdf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3lg2d"]
 texture = ExtResource("4_7qjgm")
@@ -174,5 +175,8 @@ layer = 2
 layer = 2
 current_level = "res://levels/level_1.tscn"
 next_level = "res://levels/level_2.tscn"
+
+[node name="FireTrap" parent="." instance=ExtResource("13_7vrdf")]
+position = Vector2(-350, -200)
 
 [editable path="Lemur"]

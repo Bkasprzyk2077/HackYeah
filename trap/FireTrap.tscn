@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://rkg48lkuehld"]
+
+[ext_resource type="Texture2D" uid="uid://c1b4wqu0eqmw8" path="res://assets/trap/Totem-ogien.png" id="1_0g1xm"]
+[ext_resource type="Script" path="res://trap/fire_trap.gd" id="1_nhwjk"]
+[ext_resource type="Texture2D" uid="uid://p3fv5e5naxup" path="res://assets/trap/Totem-spoczynek.png" id="2_7i01x"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q11xo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0g1xm")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7i01x")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ddcjp"]
+radius = 40.0
+
+[node name="FireTrap" type="Node2D"]
+script = ExtResource("1_nhwjk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_q11xo")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 50)
+shape = SubResource("CircleShape2D_ddcjp")
+disabled = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

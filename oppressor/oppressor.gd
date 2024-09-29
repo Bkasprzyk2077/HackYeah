@@ -52,7 +52,6 @@ func _on_timer_timeout():
 	can_move = true
 
 func _on_area_2d_area_entered(area):
-	print(area)
 	if area.get_parent() == lemur:
 		get_parent().lose()
 		$Area2D.queue_free()
