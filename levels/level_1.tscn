@@ -158,10 +158,10 @@ alarm = NodePath("../Alarm")
 tile_map = NodePath("../TileMapLayer")
 
 [node name="Victim" parent="." instance=ExtResource("4_vxrjc")]
-position = Vector2(50, -150)
+position = Vector2(-250, 50)
 
 [node name="Victim2" parent="." instance=ExtResource("4_vxrjc")]
-position = Vector2(250, 150)
+position = Vector2(-350, 50)
 
 [node name="SlowOppressorBoost" parent="." instance=ExtResource("10_076qo")]
 visible = false
