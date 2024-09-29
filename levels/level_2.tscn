@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=4 uid="uid://djbx5jnceidcv"]
 
 [ext_resource type="Script" path="res://levels/main.gd" id="1_shuoh"]
-[ext_resource type="Texture2D" uid="uid://c13u2tn142u8n" path="res://assets/bg.png" id="2_tuq5e"]
+[ext_resource type="Texture2D" uid="uid://d204t7ew8cme7" path="res://assets/Background_purple.png" id="2_eqnt8"]
 [ext_resource type="Texture2D" uid="uid://c08y7xxcfo6of" path="res://assets/Pnacza.png" id="3_2pchs"]
 [ext_resource type="Texture2D" uid="uid://lvvh6ad2roew" path="res://assets/tile_maps/green.png" id="4_rb3k6"]
 [ext_resource type="Texture2D" uid="uid://du5hcvpfny0r4" path="res://assets/tile_maps/pink.png" id="5_yymr5"]
@@ -134,7 +134,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("2_tuq5e")
+texture = ExtResource("2_eqnt8")
 
 [node name="pnacza" type="TextureRect" parent="bg"]
 anchors_preset = 15

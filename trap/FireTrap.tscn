@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://rkg48lkuehld"]
+[gd_scene load_steps=9 format=3 uid="uid://rkg48lkuehld"]
 
 [ext_resource type="Texture2D" uid="uid://c1b4wqu0eqmw8" path="res://assets/trap/Totem-ogien.png" id="1_0g1xm"]
 [ext_resource type="Script" path="res://trap/fire_trap.gd" id="1_nhwjk"]
@@ -24,7 +24,68 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ddcjp"]
-radius = 40.0
+
+[sub_resource type="Animation" id="Animation_2o7tg"]
+resource_name = "flame"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.73333, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.73333, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [&"idle", &"fire", &"idle"]
+}
+
+[sub_resource type="Animation" id="Animation_gen6u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_af0w1"]
+_data = {
+"RESET": SubResource("Animation_gen6u"),
+"flame": SubResource("Animation_2o7tg")
+}
 
 [node name="FireTrap" type="Node2D"]
 script = ExtResource("1_nhwjk")
@@ -44,6 +105,12 @@ autostart = true
 position = Vector2(0, 50)
 shape = SubResource("CircleShape2D_ddcjp")
 disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_af0w1")
+}
+autoplay = "flame"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

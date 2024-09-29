@@ -7,4 +7,4 @@ func _ready():
 		key.connect("pressed", on_key_preesed)
 
 func on_key_preesed():
-	queue_free()
+	$AnimatedSprite2D.global_position = $Marker2D.global_position
